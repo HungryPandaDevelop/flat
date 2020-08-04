@@ -1,0 +1,129 @@
+.main-area {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.slider {
+  @include positionElement(100%, 100%, 0, 0);
+  color: $whiteColor;
+
+  .item {
+    grid-template-rows: repeat(5, 1fr);
+    height: 100%;
+  }
+
+  .item-content {
+    grid-column: span 12;
+    grid-row: 4/span 1;
+    position: relative;
+    z-index: 1;
+
+
+    h2,
+    h3 {
+      margin: 0;
+    }
+
+    h2 {
+      font-size: $largeSize;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: $standartSize;
+
+      border-bottom: 1px solid transparentize($orangeColor, 0.7);
+      margin-bottom: 60px;
+
+      span {
+        display: inline-block;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $orangeColor;
+        margin-bottom: -1px;
+        width: 20%;
+      }
+    }
+  }
+
+  img {
+    object-fit: cover;
+    @include positionElement(100%, 100%, 0, 0);
+  }
+
+
+
+
+}
+
+.arr-wrap {
+  @include positionElement(50%, auto, 60px, 90px, right, bottom);
+  text-align: right;
+
+  .prev,
+  .next,
+  i {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: $standartSizePlus;
+    text-transform: uppercase;
+    cursor: pointer;
+  }
+
+  i {
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: $whiteColor;
+    margin: 0 8px;
+  }
+}
+
+.pagination {
+  @include positionElement(50%, auto, 60px, 90px, left, bottom);
+
+  span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: $whiteColor;
+    border-radius: 100%;
+    margin: 8px;
+    position: relative;
+
+    .in-element {
+      position: absolute;
+      width: 100px;
+      transform: rotate(-90deg);
+      transform-origin: left;
+      opacity: 0;
+
+    }
+
+    i,
+    em {
+      vertical-align: middle;
+    }
+
+    i {
+      font-style: normal;
+      font-size: $standartSizePlus;
+    }
+
+    em {
+      display: inline-block;
+      width: 60px;
+      height: 1px;
+      background: $whiteColor;
+    }
+
+
+    &.active {
+      background: transparentize($orangeColor, 1);
+
+      .in-element {
+        opacity: 1;
+      }
+    }
+  }
+}

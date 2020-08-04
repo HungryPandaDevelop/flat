@@ -1,0 +1,67 @@
+.hamburger-wrap {
+  @include positionElement(auto, auto, 30px, 60px, right, top, 4);
+  grid-column: 10/ span 3;
+  text-align: right;
+  color: $whiteColor;
+}
+
+.hamburger {
+  text-transform: uppercase;
+  font-size: $standartSizePlus;
+  cursor: pointer;
+
+  em {
+    display: inline-block;
+    width: 90px;
+    height: 1px;
+    background: $whiteColor;
+    margin-left: 15px;
+  }
+
+  i {
+    width: 24px;
+    height: 24px;
+    display: inline-block;
+    @include bgImageEl("../images/plus-white.png", cover);
+    margin: 0 15px;
+    transform: rotate(45deg);
+  }
+
+  em,
+  span,
+  i {
+    vertical-align: middle;
+  }
+
+}
+
+.popup-container {
+  @include positionElement(100%, 100%, 0, 0, left, top, 3, flex);
+  background: transparentize($blackColor, 0.7);
+}
+
+
+.hamburger-menu {
+  color: $whiteColor;
+  height: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  a {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: "bold";
+    font-size: $largeSize;
+    opacity: 0.4;
+    transition: ease-out 0.25s;
+
+    &.active,
+    &:hover {
+      opacity: 1;
+    }
+  }
+}

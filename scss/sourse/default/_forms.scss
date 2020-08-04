@@ -1,0 +1,175 @@
+input,
+textarea,
+.custom-select {
+  padding: 4px 15px 5px;
+  border: 1px solid $blackColor;
+  font: inherit;
+  border-radius: 4px;
+  resize: none;
+  width: 100%;
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 6px 25px rgba($blueColor, 0.2);
+  }
+}
+
+.file-decorate.error-input span,
+.error-input {
+  border-color: $redColor;
+
+}
+
+.checkbox.error-input {
+  color: $redColor;
+}
+
+/*-file-upload-*/
+
+.input-file {
+  height: 30px;
+  visibility: hidden;
+}
+
+.file-decorate {
+  height: 30px;
+  position: relative;
+  margin-top: -30px;
+  margin-bottom: 15px;
+
+  span {}
+
+  i {
+    @include positionElement(15px, 15px, 0, 0, right, top, 2, none);
+    margin: 7px;
+    @include bgImageEl("../images/close-b.png");
+    cursor: pointer;
+  }
+
+  &.full i {
+    display: block;
+  }
+}
+
+/*-file-upload-*/
+
+
+/*-custom-select-*/
+
+.custom-select {
+  cursor: pointer;
+  position: relative;
+
+  ul {
+    position: absolute;
+
+    left: -1px;
+    top: 13px;
+    right: -1px;
+    z-index: 1;
+
+    padding: 14px 0 0;
+
+    opacity: 0;
+    visibility: hidden;
+
+    border: 1px solid $blackColor;
+
+    background: $whiteColor;
+
+    overflow: hidden;
+    border-top: 0;
+    border-radius: 0 0 4px 4px;
+    margin: 0;
+
+    li {
+      padding: 2px 15px;
+      cursor: pointer;
+      transition: ease-out 0.5s;
+
+      &:hover {
+        background: $grayColor;
+      }
+    }
+  }
+
+
+  &.active {
+    border-radius: 4px 4px 0 0;
+    z-index: 3;
+
+    ul {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    i {
+      background-image: url("../images/cs-up.png");
+    }
+
+  }
+
+  span {
+    position: relative;
+    z-index: 2;
+  }
+
+  i {
+    @include bgImageEl("../images/cs-down.png");
+    @include positionElement(10px, 10px, 0, 0, right, top, 2);
+    margin: 9px;
+  }
+}
+
+/*-custom-select-*/
+/*-checkbox-select-*/
+
+.checkbox {
+  display: inline-block;
+  position: relative;
+  padding-left: 25px;
+  margin-bottom: 12px;
+  margin-right: 30px;
+  cursor: pointer;
+  user-select: none;
+
+  &:hover input~span {
+    background-color: #ccc;
+  }
+
+  input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked~span {
+      background-color: $blackColor;
+
+      &:after {
+        display: block;
+      }
+    }
+
+  }
+
+  span {
+    @include positionElement(16px, 16px, 0, 2px);
+    background: $grayColor;
+    border-radius: 100%;
+
+    &:after {
+      content: "";
+
+      @include positionElement(8px, 8px, 4px, 4px, left, top, auto, none);
+
+      background: $whiteColor;
+
+      border-radius: 100%;
+    }
+  }
+}
+
+
+/*-checkbox-select-*/

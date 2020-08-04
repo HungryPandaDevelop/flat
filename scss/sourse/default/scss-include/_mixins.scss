@@ -1,0 +1,43 @@
+//(PE-- W, H, L, T, LR, TB, Z, D, P)
+@mixin positionElement($w:100%, $h:auto, $LrPos:0, $TbPos:0, $LeftRight:left, $TopBottom:top, $z:auto, $display: block, $pos: absolute) {
+  width: $w;
+  height: $h;
+
+  @if $LeftRight==left {
+    left: $LrPos;
+  }
+
+  @else {
+    right: $LrPos;
+  }
+
+  @if $TopBottom==top {
+    top: $TbPos;
+  }
+
+  @else {
+    bottom: $TbPos;
+  }
+
+  position: $pos;
+  display: $display;
+  z-index: $z;
+}
+
+
+@mixin boxSchemeImgFull() {
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+}
+
+//url("../images/ico-hamburger-white.png", contain, center, no-repeat)
+@mixin bgImageEl($img:none, $s:contain, $p:center, $r:no-repeat) {
+  background-position: $p;
+  background-repeat: $r;
+  background-size: $s;
+  background-image: url($img);
+}

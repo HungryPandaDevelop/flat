@@ -1,0 +1,114 @@
+* {
+	box-sizing: border-box;
+}
+
+body,
+html {
+	font-family: "regular";
+	color: $blackColor;
+	font-size: $standartSize;
+	min-width: 320px;
+	min-height: 640px;
+	max-width: 1920px;
+	margin: 0 auto;
+	padding: 0;
+	position: relative;
+
+}
+
+
+.wrapper {
+	position: relative;
+	overflow: hidden;
+}
+
+a {
+	color: inherit;
+	display: inline-block;
+
+	&:hover {}
+}
+
+.ln,
+.ln li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.custom-disk {
+	li {
+		padding-left: 15px;
+		position: relative;
+
+		&:before {
+			content: "";
+			@include positionElement(4px, 4px, 0, 8px);
+			background: $blackColor;
+			border-radius: 100%;
+		}
+	}
+}
+
+.vertical-align {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.img-cover {
+	position: relative;
+}
+
+.img-cover img {
+	@include boxSchemeImgFull();
+}
+
+
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-weight: normal;
+	font-family: "bold";
+	margin: 0;
+	padding: 0;
+	line-height: 1.1;
+}
+
+
+h1 {
+	font-size: $largeSize;
+}
+
+h2 {
+	font-size: $middleSize;
+}
+
+
+.main-grid {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+	grid-column-gap: 30px;
+	padding: 0 60px;
+}
+
+.social {
+	display: inline-block;
+	vertical-align: middle;
+
+	a {
+		display: inline-block;
+		margin: 0 5px;
+
+		img {
+			object-fit: cover;
+			width: 20px;
+			height: 20px;
+		}
+	}
+}
