@@ -10,24 +10,6 @@ html
 		// header
 		
 		.main-area
-			.slider
-				each val in [""]
-					.item.main-grid
-						img.back-item(src="../images/img-1.jpg")
-						.item-content
-							h3 
-								span О Юрии Куликове
-							h2 ЮРИЙ КУЛИКОВ
-					.pagination
-						span.active
-							.in-element
-								i 01
-								em
-						span
-						span
-						span
-						span
-				.arr-wrap
-					.prev ПРОШЛЫЙ
-					i
-					.next СЛЕДУЮЩИЙ
+			// slider
+			include default/slider-class.pug
+			// slider

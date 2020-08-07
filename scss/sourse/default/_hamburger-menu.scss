@@ -12,10 +12,11 @@
 
   em {
     display: inline-block;
-    width: 90px;
+    width: 0px;
     height: 1px;
     background: $whiteColor;
     margin-left: 15px;
+    transition: ease-out 0.25s;
   }
 
   i {
@@ -24,7 +25,7 @@
     display: inline-block;
     @include bgImageEl("../images/plus-white.png", cover);
     margin: 0 15px;
-    transform: rotate(45deg);
+    transition: ease-out 0.25s;
   }
 
   em,
@@ -33,11 +34,34 @@
     vertical-align: middle;
   }
 
+
+  &.active {
+    em {
+      width: 90px;
+    }
+
+    i {
+      transform: rotate(45deg);
+    }
+
+  }
+
 }
 
-.popup-container {
-  @include positionElement(100%, 100%, 0, 0, left, top, 3, flex);
-  background: transparentize($blackColor, 0.7);
+.hamburger-container {
+  @include positionElement(100%, 100%, 0, 0, left, top, 0, flex);
+  background: $blackColor;
+
+  transition: ease-out 0.5s;
+  opacity: 0;
+  visibility: hidden;
+
+
+  &.show {
+    opacity: 1;
+    visibility: visible;
+    z-index: 3;
+  }
 }
 
 
@@ -48,6 +72,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  z-index: 2;
+  // background: transparentize($blackColor, 0.7);
 
   a {
     display: block;
@@ -63,5 +90,19 @@
     &:hover {
       opacity: 1;
     }
+  }
+}
+
+.menu-img {
+  @include positionElement(100%, 100%, 0, 0);
+
+  object-fit: cover;
+  visibility: hidden;
+  opacity: 0;
+  transition: ease-out 0.25s;
+
+  &.active {
+    visibility: visible;
+    opacity: 0.6;
   }
 }

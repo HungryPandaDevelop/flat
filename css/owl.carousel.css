@@ -44,6 +44,7 @@
     position: relative;
     min-height: 1px;
     float: left;
+    height: 100%;
     -webkit-backface-visibility: hidden;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -140,6 +141,7 @@
     0% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
     }
@@ -149,6 +151,7 @@
     0% {
         opacity: 1;
     }
+
     100% {
         opacity: 0;
     }

@@ -9,7 +9,6 @@
       <link href="../css/response.css" type="text/css" rel="stylesheet">
       <link href="../css/owl.carousel.css" type="text/css" rel="stylesheet">
       <script src="../js/jquery-3.3.1.min.js"></script>
-      <script src="../js/slider.js"></script>
       <script src="../js/jquery.mask.js"></script>
       <script src="../js/owl.carousel.js"></script>
       <script src="../js/control-style.js"></script>
@@ -22,31 +21,65 @@
         <div class="logo"><a href="./index.html"><img src="../images/logo.png"></a></div>
       </div>
     </header>
-    <div class="hamburger-wrap">
-      <div class="hamburger"> <span>Закрыть</span><em></em><i></i></div>
-    </div>
     <!-- header-->
-    <div class="popup-container">
+    <div class="hamburger-wrap">
+      <div class="hamburger element-btn" data-showEl="0"><span>Меню</span><em></em><i></i></div>
+    </div>
+    <div class="hamburger-container element-show" data-showEl="0">
+      <div class="hamburger-img"><img class="menu-img" src="../images/0.jpg"><img class="menu-img" src="../images/1.jpg"><img class="menu-img" src="../images/2.jpg"><img class="menu-img" src="../images/3.jpg"><img class="menu-img" src="../images/4.jpg"><img class="menu-img" src="../images/5.jpg">
+      </div>
       <nav class="hamburger-menu"><a href="#">Главная</a><a href="#">ОБО МНЕ</a><a href="#">ИНТЕРЬЕРЫ</a><a href="#">ЧАСТНЫЕ ДОМА</a><a href="#">ЗДАНИЯ</a><a href="#">ИНТЕРЬЕРЫ ДЛЯ БИЗНЕСА</a><a href="#">КОНТАКТЫ</a>
       </nav>
     </div>
     <!-- header-->
     <!-- header-->
     <div class="main-area">
-      <div class="slider">
-        <div class="item main-grid"><img class="back-item" src="../images/img-1.jpg">
-          <div class="item-content">
-            <h3> <span>О Юрии Куликове</span></h3>
-            <h2>ЮРИЙ КУЛИКОВ</h2>
+      <!-- slider-->
+      <div class="slider element-show" data-showEl="0">
+        <div class="slider-owl owl-carousel">
+          <div class="item"><img class="back-item" src="../images/slide-1.jpg">
+            <div class="item-content">
+              <h3> <span>О Юрии Куликове</span></h3>
+              <h2>ЮРИЙ КУЛИКОВ</h2>
+            </div>
+          </div>
+          <div class="item"><img class="back-item" src="../images/slide-2.jpg">
+            <div class="item-content">
+              <h3> <span>О Юрии Куликове</span></h3>
+              <h2>ЮРИЙ КУЛИКОВ</h2>
+            </div>
+          </div>
+          <div class="item"><img class="back-item" src="../images/slide-3.jpg">
+            <div class="item-content">
+              <h3> <span>О Юрии Куликове</span></h3>
+              <h2>ЮРИЙ КУЛИКОВ</h2>
+            </div>
+          </div>
+          <div class="item"><img class="back-item" src="../images/slide-4.jpg">
+            <div class="item-content">
+              <h3> <span>О Юрии Куликове</span></h3>
+              <h2>ЮРИЙ КУЛИКОВ</h2>
+            </div>
+          </div>
+          <div class="item"><img class="back-item" src="../images/slide-5.jpg">
+            <div class="item-content">
+              <h3> <span>О Юрии Куликове</span></h3>
+              <h2>ЮРИЙ КУЛИКОВ</h2>
+            </div>
           </div>
         </div>
-        <div class="pagination"><span class="active">
-            <div class="in-element"><i>01</i><em></em></div></span><span></span><span></span><span></span><span></span></div>
+        <div class="pagination">
+          <div class="move-element">
+            <div class="in-element"><i>
+                 01</i><em></em></div>
+          </div>
+        </div>
         <div class="arr-wrap">
-          <div class="prev">ПРОШЛЫЙ</div><i></i>
-          <div class="next">СЛЕДУЮЩИЙ</div>
+          <div class="prev arr-prev">ПРОШЛЫЙ</div><i></i>
+          <div class="next arr-next">СЛЕДУЮЩИЙ</div>
         </div>
       </div>
+      <!-- slider-->
     </div>
   </body>
 </html>

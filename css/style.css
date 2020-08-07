@@ -398,10 +398,11 @@ nav li a:hover {
 }
 .hamburger em {
   display: inline-block;
-  width: 90px;
+  width: 0px;
   height: 1px;
   background: #ffffff;
   margin-left: 15px;
+  transition: ease-out 0.25s;
 }
 .hamburger i {
   width: 24px;
@@ -412,23 +413,37 @@ nav li a:hover {
   background-size: cover;
   background-image: url("../images/plus-white.png");
   margin: 0 15px;
-  transform: rotate(45deg);
+  transition: ease-out 0.25s;
 }
 .hamburger em,
 .hamburger span,
 .hamburger i {
   vertical-align: middle;
 }
+.hamburger.active em {
+  width: 90px;
+}
+.hamburger.active i {
+  transform: rotate(45deg);
+}
 
-.popup-container {
+.hamburger-container {
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
   position: absolute;
   display: flex;
+  z-index: 0;
+  background: #000000;
+  transition: ease-out 0.5s;
+  opacity: 0;
+  visibility: hidden;
+}
+.hamburger-container.show {
+  opacity: 1;
+  visibility: visible;
   z-index: 3;
-  background: rgba(0, 0, 0, 0.3);
 }
 
 .hamburger-menu {
@@ -438,6 +453,8 @@ nav li a:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
+  z-index: 2;
 }
 .hamburger-menu a {
   display: block;
@@ -451,6 +468,24 @@ nav li a:hover {
 }
 .hamburger-menu a.active, .hamburger-menu a:hover {
   opacity: 1;
+}
+
+.menu-img {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  position: absolute;
+  display: block;
+  z-index: auto;
+  object-fit: cover;
+  visibility: hidden;
+  opacity: 0;
+  transition: ease-out 0.25s;
+}
+.menu-img.active {
+  visibility: visible;
+  opacity: 0.6;
 }
 
 /*-----hamburger-menu-----*/
@@ -525,12 +560,7 @@ footer a {
 
 /*-----slider-owl-----*/
 /*-----slider-class-----*/
-.slider-class {
-  height: 300px;
-  position: relative;
-  background: #EFEFEF;
-}
-.slider-class .item {
+.slider {
   width: 100%;
   height: 100%;
   left: 0;
@@ -538,66 +568,192 @@ footer a {
   position: absolute;
   display: block;
   z-index: auto;
-  transition: ease-out 0.5s;
+  color: #ffffff;
   overflow: hidden;
+  transition: ease-out 0.5s;
+  opacity: 1;
+  visibility: visible;
 }
-.slider-class .item.active {
-  width: 100%;
-  transition-duration: 0s;
-}
-.slider-class .item.active img {
-  z-index: 2;
-}
-.slider-class .item.active-prev {
-  width: 0%;
-}
-.slider-class .item.active-prev img {
-  z-index: 3;
-}
-.slider-class .item img {
+.slider .slider-owl {
   width: 100%;
   height: 100%;
   left: 0;
   top: 0;
   position: absolute;
   display: block;
+  z-index: auto;
+}
+.slider.show {
+  opacity: 0;
+  visibility: hidden;
+}
+.slider .item {
+  grid-template-rows: repeat(5, 1fr);
+  position: absolute;
+  left: 0%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: linear 1s;
+  transition-duration: 0s;
+}
+.slider .item img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
   z-index: 1;
   object-fit: cover;
 }
-.slider-class.move-right .item {
-  left: auto;
-  right: 0;
+.slider .item.active {
+  left: 0;
+  transition-duration: 1s;
 }
-.slider-class.move-right .item img {
-  left: auto;
-  right: 0;
+.slider .item.active img {
+  z-index: 2;
 }
-.slider-class .arr-prev,
-.slider-class .arr-next {
-  width: 40px;
-  height: 40px;
-  left: auto;
-  top: 50%;
+.slider .item.active-prev {
+  left: -100%;
+}
+.slider .item.active-prev img {
+  z-index: 3;
+}
+.slider .item.active-next {
+  left: 100%;
+}
+.slider .item.active-next t img {
+  z-index: 3;
+}
+.slider .item.speed {
+  transition-duration: 1s;
+}
+.slider .item-content {
+  grid-column: span 12;
+  transform: translateX(0%);
+  transition: ease-out 0.75s;
+  transition-delay: 0.25s;
+  width: calc(100% - 120px);
+  height: auto;
+  left: 60px;
+  bottom: 210px;
   position: absolute;
   display: block;
-  z-index: 4;
-  margin: -20px 30px 0;
-  font-size: 0;
+  z-index: 3;
+}
+.slider .item-content h2,
+.slider .item-content h3 {
+  margin: 0;
+}
+.slider .item-content h2 {
+  font-size: 72px;
+  text-transform: uppercase;
+}
+.slider .item-content h3 {
+  font-size: 16px;
+  border-bottom: 1px solid rgba(207, 93, 30, 0.3);
+  margin-bottom: 60px;
+}
+.slider .item-content h3 span {
+  display: inline-block;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cf5d1e;
+  margin-bottom: -1px;
+  width: 20%;
+}
+
+.arr-wrap {
+  width: 50%;
+  height: auto;
+  right: 60px;
+  bottom: 90px;
+  position: absolute;
+  display: block;
+  z-index: 3;
+  text-align: right;
+}
+.arr-wrap .prev,
+.arr-wrap .next,
+.arr-wrap i {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 18px;
+  text-transform: uppercase;
   cursor: pointer;
 }
-.slider-class .arr-prev {
-  left: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url("../images/arr-prev.png");
+.arr-wrap i {
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background: #ffffff;
+  margin: 0 8px;
 }
-.slider-class .arr-next {
-  right: 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-image: url("../images/arr-next.png");
+
+.pagination {
+  width: auto;
+  height: auto;
+  left: 60px;
+  bottom: 90px;
+  position: absolute;
+  display: block;
+  z-index: 3;
+}
+.pagination span {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  cursor: pointer;
+}
+.pagination span:before {
+  content: "";
+  width: 25%;
+  height: 25%;
+  border-radius: 100%;
+  margin: 50%;
+  background: #ffffff;
+  position: absolute;
+  transition: ease-out 0.25s;
+}
+.pagination span.active {
+  background: rgba(207, 93, 30, 0);
+}
+.pagination span.active:before {
+  background: none;
+}
+
+.move-element {
+  position: absolute;
+  left: 0;
+  bottom: 25px;
+  transition: ease-out 0.25s;
+}
+.move-element .in-element {
+  position: absolute;
+  width: 100px;
+  left: 16px;
+  transform: rotate(-90deg);
+  transform-origin: left;
+}
+.move-element i,
+.move-element em {
+  vertical-align: middle;
+}
+.move-element i {
+  font-style: normal;
+  font-size: 18px;
+}
+.move-element em {
+  display: inline-block;
+  width: 60px;
+  height: 1px;
+  background: #ffffff;
+}
+
+.owl-item.next-el .item-content {
+  transform: translateX(-15%);
+  opacity: 0.5;
 }
 
 /*-----slider-class-----*/
@@ -628,130 +784,7 @@ footer a {
   position: relative;
   width: 100%;
   min-height: 100vh;
-}
-
-.slider {
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  position: absolute;
-  display: block;
-  z-index: auto;
-  color: #ffffff;
-}
-.slider .item {
-  grid-template-rows: repeat(5, 1fr);
-  height: 100%;
-}
-.slider .item-content {
-  grid-column: span 12;
-  grid-row: 4/span 1;
-  position: relative;
-  z-index: 1;
-}
-.slider .item-content h2,
-.slider .item-content h3 {
-  margin: 0;
-}
-.slider .item-content h2 {
-  font-size: 72px;
-  text-transform: uppercase;
-}
-.slider .item-content h3 {
-  font-size: 16px;
-  border-bottom: 1px solid rgba(207, 93, 30, 0.3);
-  margin-bottom: 60px;
-}
-.slider .item-content h3 span {
-  display: inline-block;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #cf5d1e;
-  margin-bottom: -1px;
-  width: 20%;
-}
-.slider img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  position: absolute;
-  display: block;
-  z-index: auto;
-}
-
-.arr-wrap {
-  width: 50%;
-  height: auto;
-  right: 60px;
-  bottom: 90px;
-  position: absolute;
-  display: block;
-  z-index: auto;
-  text-align: right;
-}
-.arr-wrap .prev,
-.arr-wrap .next,
-.arr-wrap i {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 18px;
-  text-transform: uppercase;
-  cursor: pointer;
-}
-.arr-wrap i {
-  display: inline-block;
-  width: 60px;
-  height: 1px;
-  background: #ffffff;
-  margin: 0 8px;
-}
-
-.pagination {
-  width: 50%;
-  height: auto;
-  left: 60px;
-  bottom: 90px;
-  position: absolute;
-  display: block;
-  z-index: auto;
-}
-.pagination span {
-  display: inline-block;
-  width: 8px;
-  height: 8px;
-  background: #ffffff;
-  border-radius: 100%;
-  margin: 8px;
-  position: relative;
-}
-.pagination span .in-element {
-  position: absolute;
-  width: 100px;
-  transform: rotate(-90deg);
-  transform-origin: left;
-  opacity: 0;
-}
-.pagination span i,
-.pagination span em {
-  vertical-align: middle;
-}
-.pagination span i {
-  font-style: normal;
-  font-size: 18px;
-}
-.pagination span em {
-  display: inline-block;
-  width: 60px;
-  height: 1px;
-  background: #ffffff;
-}
-.pagination span.active {
-  background: rgba(207, 93, 30, 0);
-}
-.pagination span.active .in-element {
-  opacity: 1;
+  background: #000000;
 }
 
 /*-----main-page-----*/

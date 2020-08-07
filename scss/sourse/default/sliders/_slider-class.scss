@@ -1,16 +1,46 @@
-.slider-class {
-  height: 300px;
-  position: relative;
-  background: $grayColorSecond;
+.slider {
+  @include positionElement(100%, 100%, 0, 0);
+  color: $whiteColor;
+  overflow: hidden;
+  transition: ease-out 0.5s;
+  opacity: 1;
+  visibility: visible;
+
+  .slider-owl {
+    @include positionElement(100%, 100%);
+  }
+
+
+  &.show {
+    opacity: 0;
+    visibility: hidden;
+  }
 
   .item {
-    @include positionElement(100%, 100%);
-    transition: ease-out 0.5s;
-    overflow: hidden;
+    grid-template-rows: repeat(5, 1fr);
+    position: absolute;
+    left: 0%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: linear 1s;
+    transition-duration: 0s;
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      z-index: 1;
+      object-fit: cover;
+    }
 
     &.active {
-      width: 100%;
-      transition-duration: 0s;
+
+      left: 0;
+      transition-duration: 1s;
 
       img {
         z-index: 2;
@@ -18,49 +48,157 @@
     }
 
     &.active-prev {
-      width: 0%;
+      left: -100%;
+
 
       img {
         z-index: 3;
       }
     }
 
-    img {
-      @include positionElement(100%, 100%, 0, 0, left, top, 1);
-      object-fit: cover;
+    &.active-next {
+      left: 100%;
+
+      t img {
+        z-index: 3;
+      }
+    }
+
+    &.speed {
+      transition-duration: 1s;
     }
   }
 
-  &.move-right {
-    .item {
-      left: auto;
-      right: 0;
 
-      img {
-        left: auto;
-        right: 0;
+  .item-content {
+    grid-column: span 12;
+    transform: translateX(0%);
+    transition: ease-out 0.75s;
+    transition-delay: 0.25s;
+    @include positionElement(calc(100% - 120px), auto, 60px, 210px, left, bottom, 3);
+
+    h2,
+    h3 {
+      margin: 0;
+    }
+
+    h2 {
+      font-size: $largeSize;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: $standartSize;
+
+      border-bottom: 1px solid transparentize($orangeColor, 0.7);
+      margin-bottom: 60px;
+
+      span {
+        display: inline-block;
+        padding-bottom: 10px;
+        border-bottom: 1px solid $orangeColor;
+        margin-bottom: -1px;
+        width: 20%;
       }
     }
   }
 
 
 
+}
 
-  .arr-prev,
-  .arr-next {
-    @include positionElement(40px, 40px, auto, 50%, left, top, 4);
-    margin: -20px 30px 0;
-    font-size: 0;
+.arr-wrap {
+  @include positionElement(50%, auto, 60px, 90px, right, bottom, 3);
+  text-align: right;
+
+  .prev,
+  .next,
+  i {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: $standartSizePlus;
+    text-transform: uppercase;
     cursor: pointer;
   }
 
-  .arr-prev {
-    left: 0;
-    @include bgImageEl("../images/arr-prev.png");
+  i {
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: $whiteColor;
+    margin: 0 8px;
+  }
+}
+
+.pagination {
+  @include positionElement(auto, auto, 60px, 90px, left, bottom, 3);
+
+  span {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    position: relative;
+    cursor: pointer;
+
+    &:before {
+      content: "";
+      width: 25%;
+      height: 25%;
+      border-radius: 100%;
+      margin: 50%;
+      background: $whiteColor;
+      position: absolute;
+      transition: ease-out 0.25s;
+    }
+
+    &.active {
+      &:before {
+        background: none;
+      }
+
+      background: transparentize($orangeColor, 1);
+    }
+  }
+}
+
+.move-element {
+  position: absolute;
+  left: 0;
+  bottom: 25px;
+  transition: ease-out 0.25s;
+
+  .in-element {
+    position: absolute;
+    width: 100px;
+    left: 16px;
+    transform: rotate(-90deg);
+    transform-origin: left;
   }
 
-  .arr-next {
-    right: 0;
-    @include bgImageEl("../images/arr-next.png");
+  i,
+  em {
+    vertical-align: middle;
+  }
+
+  i {
+    font-style: normal;
+    font-size: $standartSizePlus;
+  }
+
+  em {
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: $whiteColor;
+  }
+
+}
+
+
+
+.owl-item.next-el {
+  .item-content {
+    transform: translateX(-15%);
+    opacity: 0.5;
   }
 }

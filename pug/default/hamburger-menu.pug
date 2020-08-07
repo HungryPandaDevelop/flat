@@ -1,4 +1,12 @@
-.popup-container
+.hamburger-wrap
+	.hamburger.element-btn(data-showEl="0")
+		span Меню
+		em
+		i
+.hamburger-container.element-show(data-showEl="0")
+	.hamburger-img
+		each val,index in ["","","","","",""]
+			img.menu-img(src="../images/"+index+".jpg")
 	nav.hamburger-menu
 		each val in ["Главная","ОБО МНЕ","ИНТЕРЬЕРЫ","ЧАСТНЫЕ ДОМА","ЗДАНИЯ","ИНТЕРЬЕРЫ ДЛЯ БИЗНЕСА","КОНТАКТЫ"]
 			a(href="#")
