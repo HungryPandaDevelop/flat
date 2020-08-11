@@ -85,6 +85,10 @@
     h2 {
       font-size: $largeSize;
       text-transform: uppercase;
+
+      span {
+        cursor: pointer;
+      }
     }
 
     h3 {
@@ -200,5 +204,23 @@
   .item-content {
     transform: translateX(-15%);
     opacity: 0.5;
+  }
+}
+
+.back-item {
+  transition: ease-out 0.75s;
+}
+
+.next-el:hover {
+  .back-item {
+    left: -10%;
+    position: relative;
+  }
+}
+
+
+.owl-item.active {
+  .back-item.hover {
+    transform: scale(1.1);
   }
 }

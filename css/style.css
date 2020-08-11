@@ -650,6 +650,9 @@ footer a {
   font-size: 72px;
   text-transform: uppercase;
 }
+.slider .item-content h2 span {
+  cursor: pointer;
+}
 .slider .item-content h3 {
   font-size: 16px;
   border-bottom: 1px solid rgba(207, 93, 30, 0.3);
@@ -754,6 +757,19 @@ footer a {
 .owl-item.next-el .item-content {
   transform: translateX(-15%);
   opacity: 0.5;
+}
+
+.back-item {
+  transition: ease-out 0.75s;
+}
+
+.next-el:hover .back-item {
+  left: -10%;
+  position: relative;
+}
+
+.owl-item.active .back-item.hover {
+  transform: scale(1.1);
 }
 
 /*-----slider-class-----*/

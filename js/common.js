@@ -1,8 +1,8 @@
 $(document).ready(function () {
 
-  var owlSlider = $(".slider-owl");
+  var owlSlider = $('.slider-owl');
 
-  var paginationObj = $(".pagination");
+  var paginationObj = $('.pagination');
 
   var item;
   var items;
@@ -12,9 +12,9 @@ $(document).ready(function () {
 
   function changePagination(indexEl) {
     paginationObj.find('span').removeClass('active').eq(indexEl - 1).addClass('active');
-    $(".move-element").css({
-      left: ((36) * (indexEl - 1)) + "px"
-    }).find("i").text("0" + (indexEl));
+    $('.move-element').css({
+      left: ((36) * (indexEl - 1)) + 'px'
+    }).find('i').text('0' + (indexEl));
   }
 
   owlSlider.owlCarousel({
@@ -91,14 +91,24 @@ $(document).ready(function () {
   });
 
 
-  $(".arr-prev").on("click", function () {
+  $('.arr-prev').on('click', function () {
     owlSlider.trigger('prev.owl.carousel');
   });
-  $(".arr-next").on("click", function () {
+  $('.arr-next').on('click', function () {
     owlSlider.trigger('next.owl.carousel');
   });
 
+  $('.slider-owl').on('click', '.next-el', function () {
+    owlSlider.trigger('next.owl.carousel');
+  });
 
+  $('.slider-owl h2 span').hover(function () {
+    if ($(this).parents('.owl-item').hasClass('active')) {
+      $('.back-item').addClass('hover');
+    }
+  }, function () {
+    $('.back-item').removeClass('hover');
+  });
 
 
 
