@@ -5,19 +5,19 @@
 
 .owl-prev,
 .owl-next {
-  @include positionElement(40px, 40px, auto, 50%);
-  margin: -20px 30px 0;
+  @include positionElement(30px, 30px, auto, 50%);
+  margin: 0;
   font-size: 0;
 }
 
 .owl-prev {
   left: 0;
-  @include bgImageEl("../images/arr-prev.png");
+  @include bgImageEl("../images/nav-prev-white.png");
 }
 
 .owl-next {
   right: 0;
-  @include bgImageEl("../images/arr-next.png");
+  @include bgImageEl("../images/nav-next-white.png");
 }
 
 .owl-dots {

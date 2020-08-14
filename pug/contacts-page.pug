@@ -1,0 +1,24 @@
+doctype html
+html
+	body
+		// head
+		include default/head.pug 
+		// head
+
+		// header
+		include default/header.pug
+		// header
+		.contacts-area
+			.feedback-area
+				h1 КОНТАКТЫ
+				.feedback-info
+					.address г. Новосибирск, ул. 1905 года, дом 69, офис 101.
+					.mail info@yura.design
+					a(href="tel:8 (999) 999-99-99").phone 8 (999) 999-99-99
+				.feedback-form
+					h2 Напишите нам
+					form
+						input(type="text"  placeholder="Ваш Email")
+						textarea(placeholder="Ваш вопрос или предложение")
+						input.btn(type="submit") 
+			.map-area

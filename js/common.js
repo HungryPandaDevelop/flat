@@ -141,4 +141,28 @@ $(document).ready(function () {
     showMenuImg(menuIndex);
   });
 
+  // main-page
+
+  // content-page
+  var owlContentGallery = $('.cg-owl');
+
+  owlContentGallery.owlCarousel({
+    items: 1,
+    nav: true,
+    dots: false,
+    smartSpeed: 1000,
+    onChanged: countOwl
+  });
+
+  function countOwl(event) {
+
+    var items = event.item.count; // Number of items
+    var item = event.item.index; // Position of the current item
+
+    $('.cg-current').text(item + 1);
+    $('.cg-all').text(items);
+  }
+  // content-page
+
+
 });

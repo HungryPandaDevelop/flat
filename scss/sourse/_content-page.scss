@@ -1,0 +1,143 @@
+.content-area {
+  color: $whiteColor;
+}
+
+.top-area {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  background: $blackColor;
+
+  .ta-bg {
+    @include positionElement(100%, 100%, 0, 0);
+    object-fit: cover;
+    opacity: 0.75;
+  }
+
+  h2 {
+    margin: auto;
+    position: relative;
+
+  }
+}
+
+.bottom-area {
+  background: $blackColor;
+  min-height: calc(100vh/2);
+  font-family: "medium";
+  font-size: $standartSizePlus;
+  padding: 0 0 60px;
+
+  .ba-text {
+    margin: 0 0 90px;
+
+    h2 {
+      margin: 0 0 30px;
+    }
+  }
+
+  .right-text {
+    grid-column: 7/span 4;
+  }
+
+  .left-text {
+    grid-column: 2/span 5;
+  }
+}
+
+.content-gallery-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.content-gallery {
+
+  grid-column: 4/span 9;
+  position: relative;
+  padding-bottom: 90px;
+  margin: 0 0 90px;
+
+  .owl-stage-outer {
+    overflow: visible;
+  }
+
+  .cg-bg {
+    background: $grayColor;
+    @include positionElement(80%, 90%, 0, 0, right, bottom);
+  }
+
+  .cg-container {
+    width: 80%;
+    height: 90%;
+    position: relative;
+
+    .item {
+      padding-bottom: 70%;
+    }
+
+    img {
+      position: absolute;
+      height: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+
+  /*owl nav*/
+  .owl-item {
+    transition: ease-out 0.5s;
+    opacity: 0;
+    visibility: hidden;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  .owl-nav {
+    @include positionElement(140px, auto, 50%, 100%);
+    transform: translateX(-50%);
+    margin-top: 30px;
+  }
+
+  .cg-count {
+    position: absolute;
+    bottom: 34px;
+    left: 40%;
+    transform: translateX(-50%);
+    font-size: $standartSizePlus;
+    text-align: center;
+
+    * {
+      display: inline-block;
+    }
+
+    .cg-current {
+      margin-right: 5px;
+    }
+
+    .cg-all {
+      opacity: 0.5;
+    }
+  }
+
+  /*owl nav*/
+}
+
+
+
+
+.masonry-container {
+  grid-column: 2/span 10;
+  column-count: 2;
+  grid-column-gap: 30px;
+  margin: 0 -15px 90px;
+
+  img {
+    width: 100%;
+    margin: 15px;
+  }
+
+}

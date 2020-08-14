@@ -1,0 +1,12 @@
+mixin content-gallery(img)
+  .main-grid.content-gallery-container
+      .content-gallery
+        .cg-bg 
+        .cg-container.cg-owl.owl-carousel
+          each val in ["","",""]
+            .item
+              img(src=img)
+        .cg-count
+          .cg-current 0 
+          span \
+          .cg-all 0

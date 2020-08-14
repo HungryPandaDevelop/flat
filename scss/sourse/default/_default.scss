@@ -89,6 +89,45 @@ h2 {
 	font-size: $middleSize;
 }
 
+h2.global {
+	font-size: $largeSize;
+	text-transform: uppercase;
+}
+
+.double-topic-container {
+	text-align: center;
+	height: 240px;
+	position: relative;
+
+	h2.double-topic {
+		font-size: 16px;
+		text-transform: uppercase;
+		display: inline-block;
+		text-align: left;
+		transform: rotate(-90deg);
+		transform-origin: left;
+		font-family: "medium";
+		position: absolute;
+		left: 50%;
+		bottom: 0;
+
+		span {
+			display: block;
+			margin: 5px 0;
+		}
+
+		i {
+			display: inline-block;
+			width: 100%;
+			height: 1px;
+			background: $whiteColor;
+			position: relative;
+			top: -6px;
+		}
+	}
+}
+
+
 
 .main-grid {
 	display: grid;
